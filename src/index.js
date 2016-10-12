@@ -22,7 +22,7 @@ export default function({ types: t }) {
             staticFileRelativePath = '.' + nodePath.sep + staticFileRelativePath;
           }
 
-          const staticFileMap = state.opts.maps[staticFileRelativePath];
+          const staticFileMap = (state.opts.maps || '')[staticFileRelativePath];
           if (staticFileMap) {
             const staticFileURL = url.resolve(staticFileMap.domian, staticFileMap.url);
             path.replaceWithSourceString(`'${staticFileURL}'`);

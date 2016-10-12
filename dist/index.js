@@ -26,7 +26,7 @@ exports.default = function (_ref) {
             staticFileRelativePath = '.' + nodePath.sep + staticFileRelativePath;
           }
 
-          var staticFileMap = state.opts.maps[staticFileRelativePath];
+          var staticFileMap = (state.opts.maps || '')[staticFileRelativePath];
           if (staticFileMap) {
             var staticFileURL = url.resolve(staticFileMap.domian, staticFileMap.url);
             path.replaceWithSourceString('\'' + staticFileURL + '\'');
