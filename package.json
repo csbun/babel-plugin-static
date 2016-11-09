@@ -7,7 +7,7 @@
     "dev": "babel src -wd dist",
     "prepublish": "babel src -d dist",
     "test-local": "mocha",
-    "test": "istanbul cover mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "author": "",
   "license": "MIT",
