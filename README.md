@@ -2,6 +2,9 @@
 
 babel plugin to replace static file path.
 
+[![Build Status](https://travis-ci.org/csbun/babel-plugin-static.svg?branch=master)](https://travis-ci.org/csbun/babel-plugin-static)
+[![Coverage Status](https://coveralls.io/repos/github/csbun/babel-plugin-static/badge.svg?branch=master)](https://coveralls.io/github/csbun/babel-plugin-static?branch=master)
+
 ## Example
 
 ```javascript

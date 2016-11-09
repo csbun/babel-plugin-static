@@ -39,6 +39,8 @@ exports.default = function (_ref) {
           var staticFileRelativePath = getRelativePath(base, staticFileDirName);
           // 静态资源 Map 文件相对于当前文件的路径
           var assetsMapFileRelativePath = getRelativePath(dirname, assetsMapFileDirName);
+          // require 使用 unix 的 `/` 而不是 windows 的 `\`
+          var assetsMapFileUnixRelativePath = assetsMapFileRelativePath.replace(/\\/g, '/');
 
           /*
            * 用最简单的 replaceWithSourceString 替换这个 require
@@ -46,7 +48,7 @@ exports.default = function (_ref) {
            * https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md#replacing-a-node-with-a-source-string
            */
           var assetsKey = state.opts.assetsKey ? '.' + state.opts.assetsKey : '';
-          var source = 'require(\'' + assetsMapFileRelativePath + '\')' + assetsKey + '[\'' + staticFileRelativePath + '\']';
+          var source = 'require(\'' + assetsMapFileUnixRelativePath + '\')' + assetsKey + '[\'' + staticFileRelativePath + '\']';
           path.replaceWithSourceString(source);
           // console.log(source);
 
