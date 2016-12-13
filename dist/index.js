@@ -15,10 +15,10 @@ exports.default = function (_ref) {
 
         if (t.isIdentifier(callee, { name: REQUIRE })) {
           var originRequirePath = (path.node.arguments[0] || '').value;
-          if (!originRequirePath || originRequirePath.indexOf('.') !== 0) {
+          if (!originRequirePath) {
             return;
           }
-          if (EXTS.indexOf(originRequirePath.split('.').pop()) === -1) {
+          if (EXTS.indexOf(originRequirePath.split('.').pop().toLowerCase()) === -1) {
             return;
           }
           // 项目根目录
@@ -32,6 +32,7 @@ exports.default = function (_ref) {
           var assetsMapFileDirName = nodePath.join(base, state.opts.assetsMapFile);
           if (staticFileDirName === assetsMapFileDirName) {
             // 如果已经被修改成静态资源 Map 文件，则不处理了
+            // 其实因为 assetsMapFileDirName 是 '.json'，根本不会进入这一行
             return;
           }
 
@@ -83,7 +84,7 @@ var generator = _require.generator;
 
 var REQUIRE = 'require';
 var BASE = process.cwd();
-var EXTS = ['png', 'jpeg', 'jpg', 'gif', 'ico', 'svg', 'css', 'less', 'scss', 'sass', 'styl'];
+var EXTS = ['png', 'jpeg', 'jpg', 'gif', 'webp', 'ico', 'svg', 'css', 'less', 'sass', 'scss', 'styl', 'eot', 'ttf', 'woff', 'woff2', 'mp3', 'wav', '3gp', 'flv', 'mov', 'mp4', 'mpeg', 'mpg', 'wmv'];
 
 function getRelativePath(fromDir, toDir) {
   var relativeDir = nodePath.relative(fromDir, toDir);
