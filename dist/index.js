@@ -37,7 +37,7 @@ exports.default = function (_ref) {
           }
 
           // 被 require 的文件全相对项目根目录的路径 - 在静态资源表中的 key 值
-          var staticFileRelativePath = getRelativePath(base, staticFileDirName);
+          var staticFileRelativePath = getRelativePath(base, staticFileDirName).replace(/\\/g, '/');
           // 静态资源 Map 文件相对于当前文件的路径
           var assetsMapFileRelativePath = getRelativePath(dirname, assetsMapFileDirName);
           // require 使用 unix 的 `/` 而不是 windows 的 `\`
@@ -77,10 +77,9 @@ exports.default = function (_ref) {
 
 var nodePath = require('path');
 
-var _require = require('babel-core');
-
-var template = _require.template;
-var generator = _require.generator;
+var _require = require('babel-core'),
+    template = _require.template,
+    generator = _require.generator;
 
 var REQUIRE = 'require';
 var BASE = process.cwd();

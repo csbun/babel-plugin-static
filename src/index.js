@@ -49,7 +49,7 @@ export default function({ types: t }) {
           }
 
           // 被 require 的文件全相对项目根目录的路径 - 在静态资源表中的 key 值
-          const staticFileRelativePath = getRelativePath(base, staticFileDirName);
+          const staticFileRelativePath = getRelativePath(base, staticFileDirName).replace(/\\/g, '/');
           // 静态资源 Map 文件相对于当前文件的路径
           const assetsMapFileRelativePath = getRelativePath(dirname, assetsMapFileDirName);
           // require 使用 unix 的 `/` 而不是 windows 的 `\`
